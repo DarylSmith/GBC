@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>families</title>
+    <script>
+
+        var family = '{"families": [{ "lastName": "Smith", "motherName": "Jane", "fatherName": "Bob", "children": ["Sue", "Ralph", "Carol"] },{ "lastName": "Lamb", "motherName": "Sue", "fatherName": "Bruce", "children": ["Nelly"] }]}';
+
+        var json = JSON.parse(family);
+        var output = "";
+
+        json.families.forEach(function (family) {
+
+          
+
+            output += "<h5>" + family.lastName + "</h5>";
+
+            output += "<ul>";
+
+            output += '<li>Father: ' + family.fatherName + ' ' + family.lastName + '</li>'
+
+            output += '<li>Mother: ' + family.motherName + ' ' + family.lastName + '</li>'
+
+            for (i = 0; i < family.children.length; i++) {
+
+                output += '<li>Child : ' + family.children[i]  + ' ' + family.lastName + '</li>'
+
+            }
+
+
+           output += "</ul>";
+
+        });
+
+      
+
+        document.write(output);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

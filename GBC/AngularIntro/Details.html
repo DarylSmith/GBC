@@ -1,0 +1,28 @@
+﻿     
+              Hi {{user}} - add something to your list
+
+
+          
+            <div ng-repeat="toDoItem in toDoItems">
+                <div class="row">
+
+                    <div class="col-md-6">To Do Item {{$index  + 1}}:</div>
+                    <div class="col-md-6">
+                        <input type="text"  placeholder="Write something" ng-model="toDoItems[$index].text"/></div>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6"><input type="button" id="addItems" value="Add an Item" ng-click="addItem()" />
+                    <input type="button" id="Button1" value="Build Report" ng-click="displayItem()" /></div>
+                 <div class="col-md-6"></div>
+            </div>
+
+
+        <div ng-include="'Report.html'"></div>
+

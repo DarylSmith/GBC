@@ -1,0 +1,19 @@
+﻿    <div id="report" ng-show="showReport==true">
+
+            Search for item <input type="text" ng-model="query" />
+                <!--<select ng-model="order">
+                    <option value="text">item</option>
+                      <option value="-text">item desc</option>
+                </select>-->
+
+                Here are all the items you need to do today:
+                <ul ng-repeat="toDoItem in toDoItems|filter:query">
+                <li> {{toDoItem.text}} </li>
+
+               
+
+
+
+
+            </ul>
+                </div>

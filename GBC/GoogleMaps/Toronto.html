@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <style>
+        html {
+          height:  100%;
+        }
+        body {
+            height:100%;
+            padding:0;
+            margin:0;
+        }
+        #map {
+            height: 100%;
+        }
+      
+    </style>
+    <script>
+        $(function () {
+
+            var infoWindow;
+
+            var items = [
+                {
+                    Lat: '43.642566',
+                    Long: '-79.387057',
+                    Name: '<h2>CN Tower</h2>',
+                    Desc: '<p>The CN Tower (French: Tour CN) is a 553.33 m-high (1,815.4 ft) concrete communications and observation tower in Downtown Toronto, Ontario, Canada</p>.',
+                    Image: '<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Toronto-view-from-cn-tower.jpg/220px-Toronto-view-from-cn-tower.jpg"/>'
+                },
+
+                {
+                    Lat: '43.676433',
+                    Long: '-79.410127',
+                    Name: '<h2>George Brown</h2>',
+                    Desc: '<p style="width:1000px">George Brown College in Toronto, Ontario provides students with the skills, experience and credentials to get the job they want.</p>',
+                    Image: '<img src="https://lh3.googleusercontent.com/-8Zfox4eFxu8/UrHN7RxcMxI/AAAAAAAAXrg/iU6er9KpbeQ/s203-k-no/photo.jpg"/>'
+                }
+            ];
+
+
+            var latlng = new google.maps.LatLng('43.653226', '-79.383184');
+            var opts = {
+                zoom: 10,
+                center: latlng,
+                streetViewControl:true
+            }
+
+            var map = new google.maps.Map($("#map")[0], opts);
+
+
+
+            items.forEach(function (item) {
+
+                var markerPt = new google.maps.LatLng(item.Lat, item.Long);
+
+                var marker = new google.maps.Marker({ position: markerPt, map: map });
+
+               
+
+                google.maps.event.addListener(marker, 'click', function () {
+
+                    if (infoWindow)
+                        infoWindow.close();
+
+
+                    infoWindow = new google.maps.InfoWindow({ content:'<div style="height:1000px;width:1000px">'+ item.Name + item.Image + item.Desc +'</div>',maxWidth:1000});
+
+                    infoWindow.open(map, marker);
+
+                    map.setCenter(marker.position);
+
+                    map.setZoom(12);
+
+
+
+
+                });
+
+
+
+            });
+
+        });
+
+
+
+    </script>
+
+</head>
+
+<body>
+<div id="map"></div>
+</body>
+</html>

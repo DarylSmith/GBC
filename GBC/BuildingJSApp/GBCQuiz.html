@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script src="jQuery.js"></script>
+<script src="JavaScript1.js"></script>
+<head>
+    <title>My Quiz</title>
+    <script>
+        $(function () {
+
+           $("#quiz").quiz({ showDrinkQuestion: true });
+
+        });
+
+    </script>
+</head>
+<body>
+<div id="quiz">
+<div class="question-container">
+<h2 class="question-title"></h2>
+
+<h2 class="question-text"></h2>
+
+<input type="text" class="question-response" />
+
+    <br />
+<input type="button" value="Submit" class="btn-submit" />
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Toronto Tours</title>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            height: 100%;
+            padding:0;
+            margin:0;
+        }
+
+        #map {
+            height: 100%;
+        }
+
+
+    </style>
+    <script>
+
+        $(function () {
+
+            var latLng = new google.maps.LatLng('43.653226', '-79.383184');
+
+            var opts = {
+                zoom: 8,
+                center:latLng
+
+            }
+
+            var map = new google.maps.Map($("#map")[0], opts);
+
+
+
+        });
+
+
+    </script>
+</head>
+<body>
+<div id="map"></div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <style>
+    .title {
+        color: #ff0000;font-size:20px;
+    }
+    .year {
+        font-style: italic;
+    }
+
+
+
+</style>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+
+    <script>
+
+        $(function () {
+
+            $("#placeholder").on('click', '.detail-link', function () {
+
+
+              var id =  $(this).attr("data-imdbid");
+
+              $.getJSON("http://www.omdbapi.com/?i=" + id, function (data) {
+
+
+                  var src = $("#templateDetails").html();
+                  var template = Handlebars.compile(src);
+                  $("#movie-details-" + id).html(template(data));
+
+                  //$("#placeholder").html(str);
+              });
+            });
+
+            var str = "";
+
+            $.getJSON("http://www.omdbapi.com/?s=Star%20Wars", function (data) {
+
+                
+                var src = $("#template").html();
+                var template = Handlebars.compile(src);
+                $("#placeholder").html(template(data));
+
+                //$("#placeholder").html(str);
+            });
+        });
+
+          
+    </script>
+</head>
+<body>
+
+<div id="placeholder"></div>
+
+
+<script id="template" type="text/x-handlebars">
+    {{#each Search}}
+    <div class="movie">
+
+    <div class="title">{{ Title }}</div>
+
+     <div class="year">{{ Year }}</div>
+
+
+    <a class="detail-link" data-imdbid="{{ imdbID }}" href="javascript:void(0);">Click to learn more</a>
+
+        <div id="movie-details-{{ imdbID }}"></div>
+
+    </div>
+    {{/each}}
+
+</script>
+
+<script id="templateDetails" type="text/x-handlebars">
+
+    <span> {{Writer}}</span>
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+    <script src="orderApp.js"></script>
+    <title>Simple Order Form</title>
+</head>
+<body>
+    <div ng-app="orderApp" ng-controller="orderController" id="my-orders">
+        <h2>Tickets for Sale</h2>
+        <!--        <table>
+            <tr>
+                <td>Adults</td>
+                <td><input type="text" ng-model="Adults" /></td>
+
+
+            </tr>
+                <tr>
+                <td>Children</td>
+                <td><input type="text" ng-model="Children" /></td>
+
+
+            </tr>
+                <tr>
+                <td>Seniors</td>
+                <td><input type="text" ng-model="Seniors" /></td>
+
+
+            </tr>
+
+
+        </table>-->
+
+        <table>
+
+
+            <tr ng-repeat="ticket in Tickets">
+                <td>{{ ticket.Type }}</td>
+                <td>
+                    <input type="text" ng-model="ticket.Quantity" /></td>
+
+
+            </tr>
+
+
+
+        </table>
+
+
+        <h3>Total Prices</h3>
+
+
+          <table>
+                 <tr>
+                <td>Member Type </td>
+                <td>
+               Price </td>
+
+
+            </tr>
+
+            <tr ng-repeat="ticket in Tickets">
+                <td>{{ ticket.Type }}</td>
+                <td>
+                  {{ ticket.Quantity * ticket.Price }}</td>
+
+
+            </tr>
+
+
+
+        </table>
+
+        <strong>Total :</strong> {{ Total() }}
+
+
+
+
+
+    </div>
+
+</body>
+</html>

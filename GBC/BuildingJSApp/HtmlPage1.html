@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+   
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+   <script>
+       $(function () {
+
+           index = 10;
+       });
+
+       var myScript = {};
+
+       //this is our array of letters
+       myScript.letters = ['a', 'b', 'c', 'd', 'e'];
+
+       //this is the index to loop through the letters
+       myScript.index = 4;
+
+       myScript.printerLetters = function () {
+
+           for (i = 0; i < myScript.index; +i++) {
+
+               document.write(myScript.letters[i]);
+           }
+
+
+       }
+
+
+
+
+       $(function () {
+        
+           myScript.printerLetters();
+
+
+       });
+
+
+
+   </script>
+
+</head>
+<body>
+
+</body>
+</html>

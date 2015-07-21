@@ -1,0 +1,261 @@
+﻿<html>
+<head>
+    <title>Facebook</title>
+   <style>
+       #map {
+           height:600px;
+           width:600px;
+       }
+
+
+   </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+    
+    <script>
+   
+        var obj = {};
+        var loc = {};
+        var markers = [];
+        var infowindow;
+        function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            // The response object is returned with a status field that lets the
+            // app know the current login status of the person.
+            // Full docs on the response object can be found in the documentation
+            // for FB.getLoginStatus().
+            if (response.status === 'connected') {
+                // Logged into your app and Facebook.
+
+            } else if (response.status === 'not_authorized') {
+                // The person is logged into Facebook, but not your app.
+                document.getElementById('status').innerHTML = 'Please log ' +
+                  'into this app.';
+            } else {
+                // The person is not logged into Facebook, so we're not sure if
+                // they are logged into this app or not.
+                document.getElementById('status').innerHTML = 'Please log ' +
+                  'into Facebook.';
+            }
+        }
+        //https://developers.facebook.com
+        //requests /me -- individual users
+        ///me/albums?fields=photos
+        ///me/home newsfeed
+        /*
+        /{user-id}/links shows only the links that were published by this person.
+    /{user-id}/posts shows only the posts that were published by this person.
+    /{user-id}/statuses shows only the status update posts that were published by this person.
+    /{user-id}/tagged shows only the posts that this person was tagged in.
+    */
+        function geoCodeLocation(location) {
+            
+            var geocoder = new google.maps.Geocoder();
+            var opts=
+            {
+                address: location
+
+
+            }
+            
+            geocoder.geocode(opts, function (results,status) {
+
+                console.log(results);
+                debugger;
+                
+                loc = results[0].geometry.location;
+                FB.api("http://graph.facebook.com/search?q=restaurant&type=place&center=" + loc['A'] + "," + loc['F'] + "&distance=1000",
+              function (response) {
+                  obj = response;
+                  console.log(response);
+                  var source = $("#fb-listings").html();
+                  var template = Handlebars.compile(source);
+                  $("#fb-placeholder").html(template(response));
+
+                  buildMap(loc['A'], loc['F'],response);
+
+             
+
+              });
+               
+
+            });
+
+
+         
+        }
+
+      
+        function buildMap(lat,long, fbResponse)
+        {
+            //remove any old map
+            $("#map").html("");
+
+            //create the lat and longitude of map
+            var latLng = new google.maps.LatLng(lat, long);
+
+            //get the option
+            var opts = {
+                zoom: 13,
+                center: latLng
+
+            }
+
+            var map = new google.maps.Map($("#map")[0], opts);
+
+            fbResponse.data.forEach(function (item) {
+
+                var pt = new google.maps.LatLng(item.location.latitude, item.location.longitude);
+
+                var marker = new google.maps.Marker({position:pt, map: map});
+
+                google.maps.event.addListener(marker, 'click', function () {
+
+
+                    infoWindow = new google.maps.InfoWindow({
+
+
+                        content:''
+
+
+                    });
+
+                    infowWindow.open(map, marker);
+
+                });
+
+
+            });
+
+        }
+
+
+
+        function requestFBGraphData() {
+
+            geoCodeLocation("Toronto, Ontario");
+            console.log(response);
+     
+        }
+
+        function queryFBGraphData() {
+
+            var location = $("#txtPlace").val();
+
+            geoCodeLocation(location);
+
+           
+        }
+
+        function getDetails(id) {
+            FB.api("/" + id + "?fields=name,picture,about,description,website,location",
+               function (response) {
+                   console.log(response);
+
+                   var source = $("#fb-details").html();
+                   var template = Handlebars.compile(source);
+                   $("#fb-details-placeholder").html(template(response));
+                 
+
+               });
+        }
+        
+       
+
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1592694290974700',
+                xfbml: true,
+                version: 'v2.3'
+            });
+
+            //get dump
+            FB.getLoginStatus(function (response) {
+                console.log(response);
+                if (response.status == "connected") {
+                    requestFBGraphData();
+                    geoCodeLocation();
+                }
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    </script>
+</head>
+
+<body>
+    <a  id="details"></a>
+    <div id="status"></div>
+    <div
+        class="fb-like"
+        data-share="true"
+        data-width="450"
+        data-show-faces="true">
+
+        <!--data scope asks permissions-->
+        <fb:login-button  scope="public_profile,email,user_friends,user_about_me,user_actions.news,read_stream,user_location">
+</fb:login-button>
+    </div>
+    <input type="text" id="txtPlace" placeholder="Put in your location" />
+
+    <input type="button" value="request" onclick="queryFBGraphData()" />
+
+    <div class="container" style="width:100%">
+    <div id="fb-placeholder" style="width:50%;float:left"></div>
+   <div id="fb-details-container" style="width:50%;float:left">
+       <div id="fb-details-placeholder"></div>
+       <div id="map"></div>
+     
+
+
+   </div>
+
+        </div>
+
+</body>
+<script id="fb-listings" type="text/x-handlebars-template">
+    <h1>Travel Agencies</h1>
+
+    {{#each data}}
+           
+    <div>
+      
+            {{category}}
+      
+                 <h2>{{ name }}</h2>
+
+        <a href="#details" onclick="getDetails('{{ id }}')"> Get Details about {{ name }}</a>
+
+        </div>    
+
+
+     {{/each}}
+
+
+
+
+</script>
+
+<script id="fb-details" type="text/x-handlebars-template">
+    <h5>{{name}}</h5>
+      <p>{{about}}</p>
+
+
+       <img style="max-width:250px;" src="{{picture.data.url}}" />
+  
+         <p>{{description}}</p>
+
+
+
+</script>
+</html>

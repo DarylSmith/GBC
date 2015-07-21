@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.min.js"></script>
+    <title>Simple To-Do List</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+
+
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="DetailsController" class="container-fluid" style="width:100%">
+
+
+        <!--     <div class="ng-view"></div>-->
+     <div ng-repeat="toDoItem in toDoItems">
+                <div class="row">
+
+                    <div class="col-md-2">To Do Item {{$index  + 1}}:</div>
+                    <div class="col-md-10">
+                        <input type="text"  placeholder="Write something" ng-model="toDoItems[$index].text"/></div>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-2"><input type="button" id="addItems" value="Add an Item" ng-click="addItem()" />
+                    <input type="button" id="Button1" value="Build Report" ng-click="displayItem()" /></div>
+                 <div class="col-md-10"></div>
+            </div>
+
+
+      <!--  <div ng-include="'Report.html'"></div>-->
+            <div id="report" ng-show="showReport==true">
+
+            Search for item <input type="text" ng-model="query" />
+           
+
+                Here are all the items you need to do today:
+                <ul ng-repeat="toDoItem in toDoItems|filter:query">
+                <li> {{toDoItem.text}} </li>
+
+               
+
+
+
+
+            </ul>
+                </div>
+
+
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+      
+    <script src="toDoList.js"></script>
+</body>
+</html>

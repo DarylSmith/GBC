@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{91C8567A-1A5F-4CA2-84F7-DEF28B9EA4A2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GBC</RootNamespace>
+    <AssemblyName>GBC</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AngularIntro\AngularAssignment1.html" />
+    <Content Include="AngularIntro\AngularAssignment1.js" />
+    <Content Include="AngularIntro\Details.html" />
+    <Content Include="AngularIntro\Listings.html" />
+    <Content Include="AngularIntro\orderApp.js" />
+    <Content Include="AngularIntro\Report.html" />
+    <Content Include="AngularIntro\SimpleOrderForm.html" />
+    <Content Include="AngularIntro\ToDoList.html" />
+    <Content Include="AngularIntro\toDoList.js" />
+    <Content Include="AngularRemotes\Details.html" />
+    <Content Include="AngularRemotes\Index.html" />
+    <Content Include="AngularRemotes\Listings.html" />
+    <Content Include="AngularRemotes\Main.js" />
+    <Content Include="BuildingJSApp\GBCQuiz.html" />
+    <Content Include="BuildingJSApp\HtmlPage1.html" />
+    <Content Include="BuildingJSApp\JavaScript1.js" />
+    <Content Include="BuildingJSApp\jQuery.js" />
+    <Content Include="BuildingJSApp\Otherscript.js" />
+    <Content Include="BuildingJSApp\SimpleQuiz.html" />
+    <Content Include="BuildingJSApp\SimpleQuiz.js" />
+    <Content Include="BuildingJSApp\SimpleQuizJquery.js" />
+    <Content Include="BuildingJSApp\SimpleQuizWithRouting.js" />
+    <Content Include="BuildingJSApp\SimpleQuizWithRoutingandStorage.js" />
+    <Content Include="Facebook\FacebookAssignment1.html" />
+    <Content Include="Facebook\facebookfiltering.html" />
+    <Content Include="Facebook\Facebookwithmap.html" />
+    <Content Include="Facebook\FBandYoutube.html" />
+    <Content Include="Facebook\JSON.html" />
+    <Content Include="Facebook\resourcePage.html" />
+    <Content Include="GoogleMapsNew.html" />
+    <Content Include="GoogleMaps\GoogleMaps.html" />
+    <Content Include="jquery.js" />
+    <Content Include="JSConcepts\OtherScript.js" />
+    <Content Include="JSConcepts\Test.html" />
+    <Content Include="KnockoutjsAdvanced\Questionnaire.html" />
+    <Content Include="KnockoutjsAdvanced\Questionnaire.js" />
+    <Content Include="GoogleMaps\Toronto_Interactive.html" />
+    <Content Include="GoogleMaps\default.htm" />
+    <Content Include="Facebook\facebook.html" />
+    <Content Include="GoogleMaps\Test.html" />
+    <Content Include="GoogleMaps\Toronto.html" />
+    <Content Include="Images\google_maps_sprites.png" />
+    <Content Include="KnockoutjsIntro\Questionnaire.html" />
+    <Content Include="KnockoutjsIntro\Questionnaire.js" />
+    <Content Include="RottenTomatoes\families.html" />
+    <Content Include="RottenTomatoes\RottenTomatoes.html" />
+    <Content Include="TestJson.html" />
+    <Content Include="Web.config" />
+    <Content Include="GoogleMaps\Wonders.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:61991/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="OtherScript.js"></script>
+    <title>Namespacing</title>
+<!--<script>
+    //create an array
+    var letters = ['a', 'b', 'c', 'd'];
+
+    var index = 3;
+
+    $(function () {
+
+        for (i = 0; i < index; i++) {
+
+            document.write(letters[i]);
+        }
+
+    });
+
+
+
+</script>-->
+
+<!--<script>
+
+    //namespace 
+    var MyScript = MyScript || {};
+
+    //add members
+    MyScript.index = 3;
+
+    MyScript.letters = ['a', 'b', 'c', 'd'];
+
+    //functions can be members too!
+    MyScript.printLetters = function () {
+
+        for (i = 0; i < MyScript.index; i++) {
+
+            document.write(MyScript.letters[i]);
+        }
+
+    }
+
+    //now call the function -- no interference!
+    $(function () {
+ 
+        MyScript.printLetters();
+
+    });
+
+
+
+</script>-->
+
+
+<script>
+    //namespace 
+    var MyScript = MyScript || {};
+
+    //anything inside this function will be scoped within the function
+    MyScript = (function () {
+
+        var index = 3;
+
+        var letters = ['a', 'b', 'c', 'd'];
+
+        //anything inside here is public
+        return {
+
+            printLetters: function () {
+
+                for (i = 0; i < index; i++) {
+
+                    document.write(letters[i]);
+                }
+
+            }
+
+
+
+        }
+
+
+    })();
+
+
+
+
+
+
+</script>
+
+
+</head>
+<body>
+
+
+
+</body>
+</html>

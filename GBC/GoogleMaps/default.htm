@@ -1,0 +1,81 @@
+﻿<html>
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Week 5 Google Maps</title>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+		<script>
+		    $(function () {
+		        var wonders = [
+                {
+                    Lat: '43.642566',
+                    Long: '-79.387057',
+                    Name: '<h2>CN Tower</h2>',
+                    Desc: '<p>The CN Tower (French: Tour CN) is a 553.33 m-high (1,815.4 ft) concrete communications and observation tower in Downtown Toronto, Ontario, Canada</p>.',
+                    Image:'<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Toronto-view-from-cn-tower.jpg/220px-Toronto-view-from-cn-tower.jpg"/>'
+                },
+
+                {
+                    Lat: '43.676433',
+                    Long: '-79.410127',
+                    Name: '<h2>George Brown</h2>',
+                    Desc: '<p>George Brown College in Toronto, Ontario provides students with the skills, experience and credentials to get the job they want.</p>',
+                    Image:'<img scr="https://lh3.googleusercontent.com/-8Zfox4eFxu8/UrHN7RxcMxI/AAAAAAAAXrg/iU6er9KpbeQ/s203-k-no/photo.jpg"/>'
+                }
+		        ];
+
+
+		        var latlng = new google.maps.LatLng('43.653226', '-79.383184');
+		        var opts = {
+		            zoom: 10,
+		            center: latlng
+		        }
+
+		        var map = new google.maps.Map($("#map")[0], opts);
+
+
+
+
+		        wonders.forEach(function (wonder) {
+
+		            var markerPt = new google.maps.LatLng(wonder.Lat, wonder.Long);
+		            var marker = new google.maps.Marker({ position: markerPt, map: map });
+		            var infowindow = new google.maps.InfoWindow({ content: wonder.Name + wonder.Image + wonder.Desc });
+
+		            google.maps.event.addListener(marker, 'click', function () {
+		                map.setZoom(12);
+		                map.setCenter(marker.position);
+		                infowindow.open(map, marker);
+
+
+		            });
+
+
+
+
+
+		        });
+
+
+
+
+
+		    });
+</script>
+</head>
+<body>
+
+
+<div id="map"></div>
+       <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map { height: 100% }
+    </style>
+
+</body>
+ 
+
+
+</html>
